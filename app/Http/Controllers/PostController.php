@@ -21,7 +21,8 @@ class PostController extends Controller
         $post = Post::find($postId);
         // Lấy userId từ bài viết
         $userId = $post->user_id;
-        $postNotification=Notification::where('type','read_post');
+        $postNotification=Notification::where('type','read_post')->first();
+
         if(!$postNotification){
             // Tiêu đề và nội dung thông báo
         $title = "Thông báo mới";

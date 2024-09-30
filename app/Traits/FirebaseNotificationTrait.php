@@ -25,9 +25,9 @@ trait FirebaseNotificationTrait
         if (!$user || !$user->fcm_token) {
             return response()->json(['message' => 'User not found or FCM token missing'], 404);
         }
-
+        //dd(env('FIREBASE_CREDENTIALS'));
         // Tạo đối tượng Factory và Messaging
-        $factory = (new Factory)->withServiceAccount('D:\\web\\OSPanel\\domains\\firebase\\firebase_credentials.json');
+        $factory = (new Factory)->withServiceAccount(base_path(env('FIREBASE_CREDENTIALS')));
 
         $messaging = $factory->createMessaging();
 
